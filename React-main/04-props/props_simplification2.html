@@ -17,6 +17,22 @@
     <script src="../React-js/prop-types.js"></script>
     <script type="text/babel">
     class Person extends React.Component{
+        constructor(props){
+            console.log(props)
+            super(props)
+
+        }
+        static propTypes = {
+            name:PropTypes.string.isRequired,
+            sex:PropTypes.string,
+            age:PropTypes.number,
+            speak:PropTypes.func,
+    
+         }
+        static defaultProps = {
+            sex: 'not male for female',
+            age: 12
+        }
         render(){
             // props only for read
             const {name,sex,age} = this.props
@@ -31,23 +47,10 @@
         }
    
     }
-    Person.propTypes = {
-        name:PropTypes.string.isRequired,
-        sex:PropTypes.string,
-        age:PropTypes.number,
-        speak:PropTypes.func,
-    
-    }
-    Person.defaultProps = {
-        sex: 'not male for female',
-        age: 12
-    }
-    let person = {name:'Tom',sex:'male',age:12}
-    ReactDOM.render(<Person {...person}/>,document.getElementById('test'))
+ 
+ 
     ReactDOM.render(<Person name = 'jerry' sex = 'male' age = {13}/>,document.getElementById('test2'))
-    function speak(){
-        console.log('hi')
-    }
+
     </script>
 </body>
 

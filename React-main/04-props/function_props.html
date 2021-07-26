@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Props Limit</title>
+</head>
+<body>
+    <div id = 'test'></div>
+
+    <script src="../React-js/react.development.js" type="text/javascript"></script>
+    <script src="../React-js/react-dom.development.js" type="text/javascript"></script>
+   
+    
+    <script src="../React-js/babel.min.js"></script>
+    <script src="../React-js/prop-types.js"></script>
+    <script type="text/babel">
+    // class Person extends React.Component{
+  
+    //     static propTypes = {
+    //         name:PropTypes.string.isRequired,
+    //         sex:PropTypes.string,
+    //         age:PropTypes.number,
+    //         speak:PropTypes.func,
+    
+    //      }
+    //     static defaultProps = {
+    //         sex: 'not male for female',
+    //         age: 12
+    //     }
+    //     render(){
+    //         // props only for read
+    //         const {name,sex,age} = this.props
+    //         return(
+    //         <ul>
+    //             <li>name:{name}</li>
+    //             <li>sex:{sex}</li>
+    //             <li>age:{age + 1}</li>    
+    //         </ul>
+    //         )
+         
+    //     }
+   
+    // }
+ 
+    function Person(props){
+        const {name,sex,age} = props
+        return(
+            
+            <ul>
+                <li>name:{name}</li>
+                <li>sex:{sex}</li>
+                <li>age:{age + 1}</li>    
+            </ul>
+            )
+    }
+    Person.propTypes = {
+            name:PropTypes.string.isRequired,
+            sex:PropTypes.string,
+            age:PropTypes.number,
+            speak:PropTypes.func,
+    
+         }
+    Person.defaultProps = {
+            sex: 'not male for female',
+            age: 12
+        }
+    ReactDOM.render(<Person name = 'jerry' sex = 'male' age = {13}/>,document.getElementById('test'))
+
+    </script>
+</body>
+
+
+
+
+</html>

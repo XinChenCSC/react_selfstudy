@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref Basis (call-back)</title>
+</head>
+<body>
+    <div id ='div'></div>
+    <script src="../React-js/react.development.js" type="text/javascript"></script>
+    <script src="../React-js/react-dom.development.js" type="text/javascript"></script>
+    <script src="../React-js/babel.min.js"></script>
+    <script type = 'text/babel'>
+        
+        class Demo extends React.Component{
+            showData = ()=>{
+                const {input1} = this
+                alert(input1.value)
+            }
+            showData2 = ()=>{
+                const {input2} = this
+                alert(input2.value)
+            }
+            render(){
+                return(
+                    <div>
+                    <input ref={currNode => this.input1 = currNode} type="text" placeholder = 'click button'></input>&nbsp;
+                    <button  onClick = {this.showData}>click me</button>&nbsp;
+                    <input ref={currNode => this.input2 = currNode} onBlur = {this.showData2} type="text" placeholder = 'lose me'></input>&nbsp;
+
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo/>,document.getElementById('div'))
+
+    </script>
+</body>
+</html>
