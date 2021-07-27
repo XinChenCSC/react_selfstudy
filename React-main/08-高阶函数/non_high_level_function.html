@@ -25,16 +25,14 @@
                 alert(`username and password is ${username}, ${password}`)
 
             }
-            saveFormData = (dataType) =>{
-                return (event)=>{
-                    this.setState({[dataType]:event.target.value})
-                }
+            saveFormData = (dataType,event) =>{
+                this.setState({[dataType]:event.target.value})
             }
             render(){
                 return(
                     <form action="http://www.baidu.com" onSubmit={this.handleSumbit}>
-                        username: <input onChange={this.saveFormData('username')} type="text" name = 'username'/>
-                        password: <input onChange={this.saveFormData('password')} type="password" name = 'password'/>
+                        username: <input onChange={event => this.saveFormData('username',event)} type="text" name = 'username'/>
+                        password: <input onChange={event => this.saveFormData('password',event)} type="password" name = 'password'/>
                         <button>login</button>
                     </form>
                 )

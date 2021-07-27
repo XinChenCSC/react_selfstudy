@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id ='div'></div>
+    <script src="../React-js/react.development.js" type="text/javascript"></script>
+    <script src="../React-js/react-dom.development.js" type="text/javascript"></script>
+    <script src="../React-js/babel.min.js"></script>
+    <script type = 'text/babel'>
+    class Count extends React.Component{
+
+        
+        state = {count:0}
+        add = ()=>{
+            const {count} = this.state
+            this.setState({count: count + 1})
+        }
+        death = ()=>{
+            ReactDOM.unmountComponentAtNode(document.getElementById('div'))
+        }
+        force = ()=>{
+            this.forceUpdate()
+        }
+        //Before render
+       componentWillMount(){
+            console.log("Count --- componentWillMount");
+       }
+
+       //after render
+       componentDidMount(){
+        console.log("Count --- componenetDidMount");
+       }
+
+       //update component after setState (update if true, not update if fasle) 
+       shouldComponentUpdate(){
+            console.log("Count --- shouldComponentUpdate");
+            return true;
+       }
+       // before component update
+       componentWillUpdate(){
+            console.log("Count --- componentWillUpdate");
+       }
+       //after component update
+       componentDidUpdate(){
+            console.log("Count --- componentDidUpdate");
+       }
+
+       //after unmount component
+       componentWillUnmonut(){
+            console.log("Count --- componentWillUnmonut");
+       }
+        render(){
+            const {count} = this.state
+            return(
+                <div>
+                    <h2>Sum? {count}</h2>
+                    <button onClick = {this.add} >click me plus 1</button>
+                    <button onClick = {this.death} >gg</button>
+                    <button onClick = {this.force} >force gg</button>
+                </div>
+            )
+        }
+    }
+    class A extends React.Component{
+        state = {carName:'benchi'}
+        changeCar = ()=>{
+            const{carName} = this.state
+            this.setState({carName:'aotuo'})
+        }
+        render(){
+            return(
+                <div>
+                    <div>A</div>
+                    <button onClick = {this.changeCar}>click me to change car</button>
+                    <B carName = {this.state.carName}/>
+                </div>
+            )
+        }
+    }
+    class B extends React.Component{
+        shouldComponentUpdate(){
+            console.log('shouldComponentUpdate')
+            return true
+        }
+        componentWillReceiveProps(){
+            console.log('componentWillReceiveProps')
+        }
+        // controller 
+        shouldComponentUpdate(){
+            console.log("Count --- shouldComponentUpdate");
+            return true;
+       }
+        // before component update
+        componentWillUpdate(){
+                console.log("Count --- componentWillUpdate");
+        }
+        //after component update
+        componentDidUpdate(){
+                console.log("Count --- componentDidUpdate");
+        }
+
+        //after unmount component
+        componentWillUnmonut(){
+                console.log("Count --- componentWillUnmonut");
+        }
+        render(){
+            console.log('render')
+            return(
+                <div>B, car:{this.props.carName}</div>
+            )
+        }
+    }
+    ReactDOM.render(<A />, document.getElementById('div'))
+    </script>
+    
+</body>
+</html>
