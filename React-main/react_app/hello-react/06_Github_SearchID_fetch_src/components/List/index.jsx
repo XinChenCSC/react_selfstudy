@@ -11,15 +11,16 @@ export default class list extends Component {
     }
     componentDidMount() {
         this.token = PubSub.subscribe('search', (_, stateObj) => {
-  
-            this.setState(stateObj )
-        })  
+
+            this.setState(stateObj)
+        })
     }
-    componentWillUnmount(){
-        PubSub.unsubscribe(this.token )
+    componentWillUnmount() {
+        PubSub.unsubscribe(this.token)
     }
     render() {
         const { state: { users, isFirst, isLoading, err } } = this
+        console.log(users)
         return (
             <div>
                 <div className="row">
@@ -27,6 +28,7 @@ export default class list extends Component {
                         isFirst ? <h2>Enter Keyword and Click Search Button</h2> :
                             isLoading ? <h2>Loding...</h2> :
                                 err ? <h2 style={{ color: 'red' }}>{err}</h2> :
+                                    users.length === 0 ? <h2> No Result </h2> :
                                     users.map((userObj) => {
                                         return (
                                             <div key={userObj.id} className="card">
@@ -36,7 +38,9 @@ export default class list extends Component {
                                                 <p className="card-text">{userObj.login}</p>
                                             </div>
                                         )
-                                    })}
+                                    })
+
+                    }
 
                 </div>
 
