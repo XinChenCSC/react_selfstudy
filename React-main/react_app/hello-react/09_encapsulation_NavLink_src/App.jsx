@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
-import Test from './components/Test'
 import MyNavLink from './components/MyNavLink'
-
 export default class App extends Component {
     render() {
         return (
@@ -27,12 +25,8 @@ export default class App extends Component {
                     <div className="col-xs-6">
                         <div className="panel">
                             <div className="panel-body">
-                                <Switch>
-                                    <Route path="/about" component={About} a='a' b='b' />
-                                    <Route path="/home" component={Home} />
-                                    <Route path="/home" component={Test} />
-                                </Switch>
-
+                                <Route path="/about" component={About} a='a' b='b' />
+                                <Route path="/home" component={Home} />
 
                             </div>
                         </div>
