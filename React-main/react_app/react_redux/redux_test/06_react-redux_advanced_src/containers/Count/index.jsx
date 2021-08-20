@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from '../../redux/actions/count'
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from '../../redux/count_action'
 import { connect } from 'react-redux'
 
 
@@ -48,7 +48,6 @@ class Count extends Component {
         return (
             <div>
                 <h1>sum: {this.props.count}</h1>
-                <h2>people: {this.props.people}</h2>
                 <select ref={c => this.selectNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -65,7 +64,7 @@ class Count extends Component {
 
 
 export default connect(
-    state => ({ count: state.sum,people:state.people.length }),
+    state => ({ count: state }),
     //     dispatch => (
     //     {
     //         add: (number) => { dispatch(createIncrementAction(number)) },
